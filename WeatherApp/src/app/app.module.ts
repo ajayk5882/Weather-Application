@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ForcastListComponent } from './forcast-list/forcast-list.component';
 import { ZipcodeEntryComponent } from './zipcode-entry/zipcode-entry.component';
-import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +18,6 @@ import { WeatherService } from './weather.service';
     AppComponent,
     ForcastListComponent,
     ZipcodeEntryComponent,
-    MainPageComponent,
     HeaderComponent,
     FooterComponent,
   ],
