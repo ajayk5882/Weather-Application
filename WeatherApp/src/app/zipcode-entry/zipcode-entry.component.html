@@ -39,11 +39,10 @@
     <div>
       <h3>{{weather.weathereData.name}}</h3>
       <h4 >Current conditions: {{weather.weathereData.weather[0].main}}</h4>
-      <h4>Temperatures today:</h4>
+      <h4>Temperatures today:{{weather.weathereData.main.temp}}</h4>
       <p>
-        Current {{weather.weathereData.main.temp}}
-        - Max {{weather.weathereData.main.temp_min}}
-        - Min {{weather.weathereData.main.temp_max}}
+        - Max Today {{weather.weathereData.main.temp_min}}
+        - Min Today {{weather.weathereData.main.temp_max}}
       <p>
         <a href="{{weather.link}}">Show 5-day forecast for {{weather.weathereData.name}}</a>
       </p>
