@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="container-fluid">
+
+  <form [formGroup]="zipCodeEntryForm" novalidate autocomplete="off">
+  <div class="well" >
+
+    <div class="form-group mb-0" [ngClass]="{
+      'has-danger': zipCodeEntryForm.controls.zipcode.invalid && (zipCodeEntryForm.controls.zipcode.dirty || zipCodeEntryForm.controls.zipcode.touched),
+      'has-success': zipCodeEntryForm.controls.zipcode.valid && (zipCodeEntryForm.controls.zipcode.dirty || zipCodeEntryForm.controls.zipcode.touched)
+      }">
+    <h2>Enter a zipcode:</h2>
+    <input class="form-control" [(ngModel)]="zipcode" 
+     placeholder="Zipcode" type="text" id="addLocation" formControlName="zipcode" name="zipcode">
+  </div>
+  
+
+  <div class=""
+  *ngIf="zipCodeEntryForm.controls.zipcode.errors && (zipCodeEntryForm.controls.zipcode.dirty || zipCodeEntryForm.controls.zipcode.touched)">
+  <small *ngIf="zipCodeEntryForm.controls.zipcode.errors.required" class="text-danger">Please Enter the zipcode</small>
+  <small *ngIf="zipCodeEntryForm.controls.zipcode.errors.pattern" class="text-danger">Zipcode Should be 5 digit only</small>
+
+</div>
+
+    <br>
+    <button class="btn btn-primary" id="addLocationBtn" [disabled]="!zipCodeEntryForm.valid" (click)="addLocation()"
+    class="btn btn-success mr-2">
+    Add location
+  </button>
+    </div>
+
+  </form>
+  
+
+
+  <div *ngIf="showWeather" class="spinner-border text-success" role="status">
+    <span class="sr-only">Loading...</span>
+    <div  *ngFor="let weather of weatherArray; let i = index">
+	<div class="well flex">
+    <div>
+      <h3>{{weather.weathereData.name}}</h3>
+      <h4 >Current conditions: {{weather.weathereData.weather[0].main}}</h4>
+      <h4>Temperatures today:</h4>
+      <p>
+        Current {{weather.weathereData.main.temp}}
+        - Max {{weather.weathereData.main.temp_min}}
+        - Min {{weather.weathereData.main.temp_max}}
+      <p>
+        <a href="{{weather.link}}">Show 5-day forecast for {{weather.weathereData.name}}</a>
+      </p>
+    </div>
+    <div>
+      <span class="close" (click)="removecity(i,weather.zipcode)">×</span>
+      <img *ngIf="weather.weathereData.weather[0].main=='Clear'" src="https://www.angulartraining.com/images/weather/sun.png">
+      <img *ngIf="weather.weathereData.weather[0].main=='Clouds'" src="https://www.angulartraining.com/images/weather/clouds.png">
+      <img *ngIf="weather.weathereData.weather[0].main=='Rain'" src="https://www.angulartraining.com/images/weather/rain.png">
+      <img *ngIf="weather.weathereData.weather[0].main=='Snow'" src="https://www.angulartraining.com/images/weather/snow.png">
+    </div>
+  </div>
+  </div>
+ </div>
+</div>
+
+ <app-footer></app-footer>
+
+<router-outlet></router-outlet>

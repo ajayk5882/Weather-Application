@@ -1,0 +1,13 @@
+nav{
+    height:16vh;
+    /*Or fixed pixel unit*/
+    background-color: green;
+     padding: 5px;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+   }
+   .center {
+    text-align: center;
+    border: 3px solid green;
+  }

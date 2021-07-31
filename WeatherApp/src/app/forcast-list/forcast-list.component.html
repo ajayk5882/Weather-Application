@@ -1,0 +1,31 @@
+<app-header></app-header>
+<h4>Weather 5-day forecast</h4>
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">5-day forecast for Rancho Cordova</h3>
+
+    </div>
+    <ul class="list-group" *ngFor="let forcast of fiveDaysForcast;">
+      <li class="list-group-item">
+        <!-- Monday, Mar 23: {{forcast}} --> {{ forcast.dt | date:'EEEE' }}
+        {{forcast.weather[0].main}}
+        - Min: {{forcast.temp.min}}
+        - Max: {{forcast.temp.max}}
+
+        <img *ngIf="forcast.weather[0].main=='Clear'" class="icon"
+          src="https://www.angulartraining.com/images/weather/sun.png">
+        <img *ngIf="forcast.weather[0].main=='Clouds'" class="icon"
+          src="https://www.angulartraining.com/images/weather/clouds.png">
+        <img *ngIf="forcast.weather[0].main=='Rain'" class="icon"
+          src="https://www.angulartraining.com/images/weather/rain.png">
+        <img *ngIf="forcast.weather[0].main=='Snow'" class="icon"
+          src="https://www.angulartraining.com/images/weather/snow.png">
+      </li>
+
+    </ul>
+  </div>
+  <button class="btn btn-success" tabindex="0" id="mainPageBtn" (click)="gotohome()">&lt; Back to main page</button>
+</div>
+
+<app-footer></app-footer>
