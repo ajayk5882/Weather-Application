@@ -1,6 +1,6 @@
 <app-header></app-header>
 <h4>Weather 5-day forecast</h4>
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="weatherForecastPage">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">5-day forecast for {{weatherForcast.city.name }} {{zipcode}}</h3>

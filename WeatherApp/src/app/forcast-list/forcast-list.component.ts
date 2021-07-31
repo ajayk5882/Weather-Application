@@ -14,7 +14,7 @@ export class ForcastListComponent implements OnInit {
   zipcode: string;
   fiveDaysForcast: any = [];
   weatherForcast: WeatherForcast = new WeatherForcast();
-
+  weatherForecastPage=false;
   ngOnInit(): void {
     this.arouter.params.subscribe(params => {
       this.zipcode = params['id'];
@@ -22,10 +22,12 @@ export class ForcastListComponent implements OnInit {
         this.getFiveDateForcastData(this.zipcode);
       }
     });
+    this.weatherForecastPage=false;
   }
 
   getFiveDateForcastData(zipcode): void {
     this.weatherService.getWeatherForecastByZipcode(zipcode).subscribe(result => {
+      this.weatherForecastPage=true;
       this.weatherForcast = result;
       this.fiveDaysForcast = this.weatherForcast.list
     },
